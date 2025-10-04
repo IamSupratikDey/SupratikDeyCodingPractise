@@ -5,6 +5,30 @@ import java.util.*;
  */
 public class LargestSubarray {
 
+    public static void printTheLargestSubstringUsingSlidingWindow(String str)
+    {
+        int size = str.length();
+        int l = 0, r = 0;
+        int maxLength = Integer.MIN_VALUE;
+        HashMap<Character, Integer> map = new HashMap<>(255);
+
+        while (r<size)
+        {
+            if(map.containsKey(str.charAt(r)))
+            {
+                if(map.getOrDefault(str.charAt(r),r)>l)
+                {
+                    l=map.getOrDefault(str.charAt(r),r)+1;
+                }
+            }
+
+            int length = r-l+1;
+            maxLength = Math.max(maxLength,length);
+            map.put(str.charAt(r),r);
+            r++;
+        }
+        System.out.println(maxLength);
+    }
     public static void printTheLargestSubStringAndLength(String str)
     {
         int strLength = str.length();
@@ -35,8 +59,8 @@ public class LargestSubarray {
 
         System.out.println("You entered: " + input);
         sc.close();
-        printTheLargestSubStringAndLength(input);
-
+//        printTheLargestSubStringAndLength(input);
+        printTheLargestSubstringUsingSlidingWindow(input);
     }
 
 
