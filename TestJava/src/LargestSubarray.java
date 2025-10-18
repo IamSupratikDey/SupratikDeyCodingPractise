@@ -40,8 +40,8 @@ public class LargestSubarray {
             {
                 if(se.contains(str.charAt(j)))
                 {
-                   maxans = Math.max(maxans, j-i+1);
-                   break;
+                    maxans = Math.max(maxans, j-i+1);
+                    break;
                 }
 
                 se.add(str.charAt(j));

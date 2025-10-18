@@ -67,6 +67,35 @@ public class FindDuplicatesInAGivenString {
         frequecyCount.forEach((ch, count) ->
                 System.out.println(ch + " → " + count));
     }
+
+    public static void checkForPalindromeString(String str)
+    {
+        /**
+         * Two pointer approach
+         */
+        int l=0;
+        int r = str.length()-1;
+        boolean isPalindrome = true;
+        while (l<r)
+        {
+            if(str.charAt(l)!=str.charAt(r))
+            {
+                isPalindrome = false;
+                break;
+            }
+
+            l++;
+            r--;
+        }
+
+        if (isPalindrome) {
+            System.out.println(str + " is a palindrome.");
+        } else {
+            System.out.println(str + " is not a palindrome.");
+        }
+
+
+    }
     public static void main (String[] args)
     {
         Scanner sc = new Scanner(System.in);
@@ -75,6 +104,7 @@ public class FindDuplicatesInAGivenString {
         sc.close();
 
 //        findDuplicatesInaGivenstring(input);
-        convertString(input);
+//        convertString(input);
+        checkForPalindromeString(input);
     }
 }
