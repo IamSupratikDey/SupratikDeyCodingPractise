@@ -49,18 +49,80 @@ public class LargestSubarray {
         }
         System.out.println(maxans);
     }
+
+    /**
+     * This method is finding the maximum element from an given array
+     * Using sliding window technique with doubly ended queue
+     * -> Requirement to complete this function
+     *    1.One Double ended queue
+     *    2.One resultant array/list to store the maximum element from subarray
+     * Returns an array
+
+     */
+    public static int[] findTheMaximumFromAGivenSubArray(int [] arr, int size, int k)
+    {
+        int [] resulttantArray = new int[size-k+1];
+        if(arr==null || arr.length==0 || k<= 0)
+        {
+            return new int[0];
+        }
+
+        /**
+         * Array dequeue will store array indices
+         */
+        Deque <Integer> storeMax = new ArrayDeque<>();
+        for (int i=0; i<size; i++)
+        {
+            while (!storeMax.isEmpty() && storeMax.peekFirst() < i-k+1)
+            {
+                storeMax.pollFirst();
+            }
+
+            /**
+             * this I am doing because we are storing the value in the dequeue in descending order that is Large to small
+             */
+            while (!storeMax.isEmpty() && arr[storeMax.peekLast()] < arr[i])
+            {
+                storeMax.pollLast();
+            }
+
+            /**
+             * This will store the element in rear side of the dequeue
+             */
+            storeMax.offerLast(i);
+
+            /**
+             * Now the final check -> This condition checks if you've processed at least k elements—meaning the sliding window is now full and can start producing results.
+             * Why peekFirst -> Because in the dequeue we are storing t
+             */
+
+            if(i>=k-1)
+            {
+                resulttantArray[i-k+1] = arr[storeMax.peekFirst()];
+            }
+        }
+        return resulttantArray;
+
+    }
     public static void main (String [] args)
     {
         Scanner sc = new Scanner(System.in);
-
         System.out.print("Enter a string: ");
-
         String input = sc.nextLine();
-
         System.out.println("You entered: " + input);
         sc.close();
-//        printTheLargestSubStringAndLength(input);
+        printTheLargestSubStringAndLength(input);
         printTheLargestSubstringUsingSlidingWindow(input);
+        System.out.println("Enter the size of the array");
+        int size = sc.nextInt();
+        int [] array = new int[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = sc.nextInt();
+        }
+        int [] arrayNumber = findTheMaximumFromAGivenSubArray(array,size, 3);
+        System.out.println("The arrayElements are " + java.util.Arrays.toString(arrayNumber));
+
+
     }
 
 
