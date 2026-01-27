@@ -23,21 +23,40 @@ public class StringPractice {
         return  resultString.toString();
     }
 
-//    public static String sentenceReverse(String inputString)
-//    {
-//        return "";
-//    }
+    public static String sentenceReverse(String inputString)
+    {
+        String resultString = "";
+        int length = inputString.length();
+        int j = length-1;
+        int i = 0;
+
+        while(j>0)
+        {
+            while(inputString.charAt(j)==' '  && j>0) j--;
+
+            i=j;
+
+            while(inputString.charAt(j)!=' ' && j>=0)j--;
+
+            resultString = resultString+inputString.substring(j+1, i+1)+" ";
+        }
+
+
+        return resultString;
+    }
+
+
 
     public static void main(String[]args)
     {
-        String reverseAString = " Encyclopedia      ";
-        String reverseASentence = "The Sy is Blue and Clear";
+        String reverseAString = " Encyc   lopedia      ";
+        String reverseASentence = "  The Sky is Blue and Clear   ";
 
 
-        reverseAString = stringReverse(reverseAString);
-        System.out.println(reverseAString);
+//        reverseAString = stringReverse(reverseAString);
+//        System.out.println(reverseAString);
 
-//        reverseASentence = sentenceReverse(reverseASentence);
-//        System.out.println(reverseASentence);
+        reverseASentence = sentenceReverse(reverseASentence);
+        System.out.println(reverseASentence);
     }
 }
