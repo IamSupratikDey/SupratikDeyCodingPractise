@@ -37,7 +37,7 @@ public class SortHashMap {
         Map<Character, List<String>> groupedStrings = words.stream()
                 .collect(Collectors.groupingBy(w->w.charAt(0)));
 
-        List<String> a = groupedStrings.getOrDefault('a', Collections.emptyList());
+        List<String> a = groupedStrings.getOrDefault('a',Collections.emptyList());
         List<String> b = groupedStrings.getOrDefault('b', Collections.emptyList());
         List<String> C = groupedStrings.getOrDefault('c', Collections.emptyList());
         List<String> d = groupedStrings.getOrDefault('d', Collections.emptyList());
