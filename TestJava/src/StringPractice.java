@@ -36,7 +36,7 @@ public class StringPractice {
 
             i=j;
 
-            while(inputString.charAt(j)!=' ' && j>=0)j--;
+            while(inputString.charAt(j)!=' ' && j>0)j--;
 
             resultString = resultString+inputString.substring(j+1, i+1)+" ";
         }
