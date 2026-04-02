@@ -39,6 +39,32 @@ public class BuyAndSellStocks {
             System.out.println("No distinct second highest value.");
         }
     }
+
+
+    public static void findTheSecondLargestElementInArray(int arr[], int size)
+    {
+        Integer smallest=null,  secondSmallest = null;
+
+        for(int number:arr)
+        {
+            if(smallest==null || number<smallest)
+            {
+                secondSmallest=smallest;
+                smallest=number;
+            }
+
+            else if ( (secondSmallest==null || number<secondSmallest) && number!=smallest )
+            {
+                secondSmallest=number;
+            }
+        }
+
+        if (secondSmallest != null) {
+            System.out.println("Second smallest: " + secondSmallest);
+        } else {
+            System.out.println("No distinct second smallest value.");
+        }
+    }
     public static void main (String [] args)
     {
         Scanner sc = new Scanner(System.in);
@@ -51,10 +77,10 @@ public class BuyAndSellStocks {
             array[i] = sc.nextInt();
         }
 
-//        int maxProfit = determineMaxProfitByBuyAndSellingStocks(array,size);
-//        System.out.println(maxProfit);
+        int maxProfit = determineMaxProfitByBuyAndSellingStocks(array,size);
+        System.out.println(maxProfit);
 
         findTheSecondHighestElementInanArray(array,size);
-
+        findTheSecondLargestElementInArray(array,size);
     }
 }
